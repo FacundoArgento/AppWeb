@@ -33,7 +33,7 @@ public class User{
 	private String lastName;
 	
 	@Column(name = "birth_date")
-	private SimpleDateFormat birthDate = new SimpleDateFormat("yyyy-mm-dd");
+	private Date birthDate;
 	
 	@Column(name = "nationality")
 	private String nationality;
