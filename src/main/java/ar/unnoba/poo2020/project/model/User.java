@@ -1,7 +1,7 @@
 package ar.unnoba.poo2020.project.model;
 
-import java.util.Arrays;
-import java.util.Collection;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,13 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails{
+public class User{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +33,7 @@ public class User implements UserDetails{
 	private String lastName;
 	
 	@Column(name = "birth_date")
-	private Date birthDate;
+	private SimpleDateFormat birthDate = new SimpleDateFormat("yyyy-mm-dd");
 	
 	@Column(name = "nationality")
 	private String nationality;
@@ -97,39 +94,4 @@ public class User implements UserDetails{
 		this.nationality = nationality;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
-	}
-
-	@Override
-	public String getUsername() {
-		return this.getEmail();
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	
 }

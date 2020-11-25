@@ -1,7 +1,6 @@
 package ar.unnoba.poo2020.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,25 +21,14 @@ public class UserController {
 	public UserController(IUserService userService) { this.userService = userService; }
 	
 	@GetMapping("/new")
-	public String userNew(Model model, Authentication auth) {
+	public String userNew(Model model) {
 		model.addAttribute( "user", new User());
-		if(auth != null){
-	        User sesionUser = (User) auth.getPrincipal();
-	        model.addAttribute("name", sesionUser.getFirstName());
-            model.addAttribute("lastName", sesionUser.getLastName());
-		}
 		return "/users/new";
 	}
 	
 	@PostMapping
-	public String create(@ModelAttribute User user, Model model, Authentication auth) {
-		if(auth != null){
-	        User sesionUser = (User) auth.getPrincipal();
-	        model.addAttribute("name", sesionUser.getFirstName());
-            model.addAttribute("lastName", sesionUser.getLastName());
-		}
-		
+	public String create(@ModelAttribute User user) {
 		userService.create(user);
-		return "redirect:/users";
+		return "redirect:/";
 	}
 }
