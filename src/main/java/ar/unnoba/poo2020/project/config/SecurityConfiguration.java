@@ -1,4 +1,4 @@
-package ar.unnoba.poo2020.config;
+package ar.unnoba.poo2020.project.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
