@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Habitaciones Disponibles</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div>Rooms Availability</div>
+    <form action="#" th:action="@{/bookings/availability}" th:object="${roomsAvailability}" method="post">
+        <label> Check In </label>
+        <input type="text" th:field="*{checkIn}"/>
+        <label> Check Out </label>
+        <input type="text" th:field="*{checkOut}"/>
+        <label> Occupancy </label>
+        <input type="text" th:field="*{occupancy}"/>
+        <button type="submit" name="availability"> Check Availability </button>
+    </form>
+    
+    <table>
+    	<thead>
+    	<tr>
+    		<th> Room </th>
+    		<th> Occupancy </th>
+    		<th> Facilities </th>
+    		<th> Price </th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr th:if="${rooms.empty}">
+    		<td colspan="2"> No Rooms Available </td>
+    	</tr>
+    	<tr th:each="room : ${rooms}">
+    		<td><span> th:text="${room.name}"> Room </span></td>
+    		<td><span> th:text="${room.occupancy}"> Occupancy </span></td>
+    		<td><span> th:text="${room.facilities}"> Facilities </span></td>
+    		<td><span> th:text="${room.price}"> Price </span></td>
+    		<td>
+    			Book
+    		</td>
+    	</tr>
+    	</tbody>
+    </table>
+</div>
+</body>
+</html>

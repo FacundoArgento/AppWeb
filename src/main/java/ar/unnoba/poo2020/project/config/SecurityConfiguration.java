@@ -1,5 +1,6 @@
 package ar.unnoba.poo2020.project.config;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -25,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/","/users/new").permitAll()
+			.antMatchers("/","/users/new", "/bookings/availability").permitAll()
 			.antMatchers(HttpMethod.POST,"/users").permitAll()
 			.antMatchers("/**").hasRole("USER")
 			.and().formLogin();
@@ -34,6 +35,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder getPasswordEcoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public ModelMapper modelMapper() {
+	    return new ModelMapper();
 	}
 	
 }
