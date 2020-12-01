@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ar.unnoba.poo2020.project.dto.RoomDTO;
 import ar.unnoba.poo2020.project.dto.RoomsAvailabilityDTO;
 import ar.unnoba.poo2020.project.model.Room;
+import ar.unnoba.poo2020.project.service.BookingService;
 import ar.unnoba.poo2020.project.service.RoomService;
 
 @Controller
@@ -23,12 +24,12 @@ import ar.unnoba.poo2020.project.service.RoomService;
 public class BookingController {
 	
 	private RoomService roomService;
-	//private BookingService bookingService;
+	private BookingService bookingService;
 	private ModelMapper modelMapper;
 	
 	@Autowired
-	public BookingController(RoomService roomService, ModelMapper modelMapper) {
-		super();
+	public BookingController(RoomService roomService, ModelMapper modelMapper, BookingService bookingService) {
+		this.bookingService = bookingService;
 		this.roomService = roomService;
 		this.modelMapper = modelMapper;
 	} 
@@ -59,5 +60,4 @@ public class BookingController {
 		return "bookings/availability";
 	}
 	
-
 }

@@ -7,6 +7,6 @@ import java.util.Date;
 import ar.unnoba.poo2020.project.model.Room;
 
 public interface IRoomService {
-	List<Room> getRoomsAvailable(Date checkIn, Date checkOut, int occupancy);
-	Optional <Room> findById(Long roomId);
+	public List<Room> getRoomsAvailable(Date checkIn, Date checkOut, int occupancy);
+	public Optional <Room> findById(Long roomId);
 }

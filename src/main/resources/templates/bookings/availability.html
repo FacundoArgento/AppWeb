@@ -28,13 +28,13 @@
     	</thead>
     	<tbody>
     	<tr th:if="${rooms.empty}">
-    		<td colspan="2"> No Rooms Available </td>
+    		<td colspan="4"> No Rooms Available </td>
     	</tr>
     	<tr th:each="room : ${rooms}">
-    		<td><span> th:text="${room.name}"> Room </span></td>
-    		<td><span> th:text="${room.occupancy}"> Occupancy </span></td>
-    		<td><span> th:text="${room.facilities}"> Facilities </span></td>
-    		<td><span> th:text="${room.price}"> Price </span></td>
+    		<td><span th:text="${room.name}"> Room </span></td>
+    		<td><span th:text="${room.occupancy}"> Occupancy </span></td>
+    		<td><span th:text="${room.facilities}"> Facilities </span></td>
+    		<td><span th:text="${room.price}"> Price </span></td>
     		<td>
     			Book
     		</td>
