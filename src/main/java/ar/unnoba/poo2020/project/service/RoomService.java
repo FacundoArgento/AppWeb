@@ -12,8 +12,13 @@ import ar.unnoba.poo2020.project.repository.RoomRepository;
 
 @Service
 public class RoomService implements IRoomService {
-	@Autowired
+	
 	private RoomRepository roomRepository;
+	
+	@Autowired
+    public RoomService(RoomRepository roomRepository){
+        this.roomRepository = roomRepository;
+    }
 
 	@Override
 	public List<Room> getRoomsAvailable(Date checkIn, Date checkOut, int occupancy) {

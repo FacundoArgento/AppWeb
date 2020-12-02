@@ -30,6 +30,12 @@ public class Room {
 	@Column(name = "facilities")
 	private String facilities;
 	
+	
+	
+	public Room() {
+		super();
+	}
+
 	public Room(String name, float price, int occupancy, int availability, String facilities) {
 		super();
 		this.name = name;

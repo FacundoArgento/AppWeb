@@ -25,12 +25,15 @@ public class Booking {
 	private User guest;
 	
 	@Column(name = "check_in")
+	//@Temporal(TemporalType.DATE)
 	private Date checkIn;
 	
 	@Column(name = "check_out")
+	//@Temporal(TemporalType.DATE)
 	private Date checkOut;
 	
 	@Column(name = "created_at")
+	
 	private Date createdAt;
 	
 	@ManyToOne

@@ -6,14 +6,11 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
 public class RoomsAvailabilityDTO{
-
-
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	
 	private String checkIn;
 	private String checkOut;
 	private int occupancy;
 	
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public String getCheckIn() {
 		return checkIn;
@@ -41,12 +38,12 @@ public class RoomsAvailabilityDTO{
 		return dateFormat.parse(this.checkIn);
 	}
 	
-	public void setCheckInDate(Date date) { this.checkIn = dateFormat.format(date);}
+	public void setCheckInDate(Date date) {this.checkIn = dateFormat.format(date);}
 	
 	public Date getCheckOutDateConverted() throws ParseException {
 		return dateFormat.parse(this.checkOut);
 	}
 	
-	public void setCheckOutDate(Date date) { this.checkOut = dateFormat.format(date);}
+	public void setCheckOutDate(Date date) {this.checkOut = dateFormat.format(date);}
 	
 }

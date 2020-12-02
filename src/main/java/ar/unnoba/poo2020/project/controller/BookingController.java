@@ -49,7 +49,13 @@ public class BookingController {
 					roomsAvailabilityDTO.getCheckInDateConverted(),
 					roomsAvailabilityDTO.getCheckOutDateConverted(),
 					roomsAvailabilityDTO.getOccupancy());
+			
 		} catch (Exception e) {}
+		
+		if (rooms.isEmpty()) 
+			System.out.println("Está vacia");
+		else
+			System.out.println("No esta vacía.");
 		
 		List<RoomDTO> roomsDTO = rooms.stream()
 				.map(room -> modelMapper.map(room, RoomDTO.class))
