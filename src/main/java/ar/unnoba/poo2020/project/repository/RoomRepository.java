@@ -19,6 +19,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
 	
 	@Query("Select r From Room r where r.id = :roomId and r.availability > ("
 			+ "Select count(b) From Booking b where b.room = r and b.checkIn between :checkIn and :checkOut)")
-	Room isRoomAvailable(@Param("checkIn") Date checkIn, @Param("checkOut") Date checkOut,
+	public Room isRoomAvailable(@Param("checkIn") Date checkIn, @Param("checkOut") Date checkOut,
 								@Param("roomId") Long roomId);
 }

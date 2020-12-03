@@ -40,36 +40,34 @@ public class Booking {
 	@JoinColumn(name = "room_id", referencedColumnName = "id")
 	private Room room;
 	
-	@Column(name = "breakfast_included")
-	private boolean breakfastIncluded;
+	//@Column(name = "breakfast_included")
+	//private boolean breakfastIncluded;
 	
-	@Column(name = "parking")
-	private boolean parking;
+	//@Column(name = "parking")
+	//private boolean parking;
 	
-	@Column(name = "free_cancelation")
-	private boolean freeCancelation;
+	//@Column(name = "free_cancelation")
+	//private boolean freeCancelation;
 	
 	@Column(name = "cost")
 	private Float cost;
 	
-	@OneToOne(mappedBy = "booking")
-	private Payment payment;
+	//@OneToOne(mappedBy = "booking")
+	//private Payment payment;
 	
 	
+	public Booking() {
+		super();
+	}
 	
-	public Booking(User guest, Date checkIn, Date checkOut, Date createdAt, Room room, boolean breakfastIncluded,
-			boolean parking, boolean freeCancelation, Float cost, Payment payment) {
+	public Booking(User guest, Date checkIn, Date checkOut, Date createdAt, Room room, Float cost) {
 		super();
 		this.guest = guest;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.createdAt = createdAt;
 		this.room = room;
-		this.breakfastIncluded = breakfastIncluded;
-		this.parking = parking;
-		this.freeCancelation = freeCancelation;
 		this.cost = cost;
-		this.payment = payment;
 	}
 	public Long getId() {
 		return id;
@@ -107,37 +105,12 @@ public class Booking {
 	public void setRoom(Room room) {
 		this.room = room;
 	}
-	public boolean isBreakfastIncluded() {
-		return breakfastIncluded;
-	}
-	public void setBreakfastIncluded(boolean breakfastIncluded) {
-		this.breakfastIncluded = breakfastIncluded;
-	}
-	public boolean isParking() {
-		return parking;
-	}
-	public void setParking(boolean parking) {
-		this.parking = parking;
-	}
-	public boolean isFreeCancelation() {
-		return freeCancelation;
-	}
-	public void setFreeCancelation(boolean freeCancelation) {
-		this.freeCancelation = freeCancelation;
-	}
+	
 	public Float getCost() {
 		return cost;
 	}
 	public void setCost(Float cost) {
 		this.cost = cost;
-	}
-	
-	public Payment getPayment() {
-		return payment;
-	}
-	
-	public void setPayment(Payment payment) {
-		this.payment = payment;
 	}
 	
 }

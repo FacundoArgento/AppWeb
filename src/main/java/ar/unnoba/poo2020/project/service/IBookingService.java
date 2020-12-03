@@ -1,5 +1,8 @@
 package ar.unnoba.poo2020.project.service;
 
-public interface IBookingService {
+import ar.unnoba.poo2020.project.model.Booking;
 
+public interface IBookingService {
+	Booking createBooking(Booking booking) throws Exception;
+	
 }

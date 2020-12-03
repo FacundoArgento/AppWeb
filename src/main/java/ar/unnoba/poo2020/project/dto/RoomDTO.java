@@ -2,6 +2,7 @@ package ar.unnoba.poo2020.project.dto;
 
 public class RoomDTO {
 	
+	private Long id;
 	private String name;
 	private float price;
 	private int occupancy;
@@ -30,6 +31,12 @@ public class RoomDTO {
 	}
 	public void setFacilities(String facilities) {
 		this.facilities = facilities;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	
