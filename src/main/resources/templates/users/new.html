@@ -5,15 +5,25 @@
     <title>Crear Usuario</title>
 </head>
 <body>
-    <div>New User</div>
+    <div align="center">
+    <h1> New User </h1>
     <form action="#" th:action="@{/users}" th:object="${user}" method="post">
+    	<label> Email: </label>
         <input type="text" th:field="*{email}"/>
+        <label> Password: </label>
         <input type="password" th:field="*{password}"/>
+        <label> First Name: </label>
         <input type="text" th:field="*{firstName}"/>
-        <input type="text" th:field="*{lastName}"/>
-        <input type="text" th:field="*{nationality}"/>
+        <label> Last Name: </label>
+        <input type="text" th:field="*{lastName}"/><br/><br/>
+        <label> DNI: </label>
+        <input type="text" th:field="*{dni}"/>
+        <label> Date Birth: </label>
+        <input type="text" th:field="*{birthDate}"/>
+        <label> Nationality: </label>
+        <input type="text" th:field="*{nationality}"/> <br/><br/>
         <button type="submit" name="newUser">Create</button>
     </form>
-
+	</div>
 </body>
 </html>

@@ -2,7 +2,6 @@ package ar.unnoba.poo2020.project.model;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,8 +35,12 @@ public class User implements UserDetails{
 	@Column(name = "last_name")
 	private String lastName;
 	
+	@Column(name = "dni")
+	private String dni;
+	
+	// Lo dejo en String para facilitar las cosas ya que no es requerido para ninguna operacion.
 	@Column(name = "birth_date")
-	private Date birthDate;
+	private String birthDate;
 	
 	@Column(name = "nationality")
 	private String nationality;
@@ -46,12 +49,13 @@ public class User implements UserDetails{
 		super();
 	}
 	
-	public User(String email, String password, String firstName, String lastName, Date birthDate, String nationality) {
+	public User(String email, String password, String firstName, String lastName, String dni, String birthDate, String nationality) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.dni = dni;
 		this.birthDate = birthDate;
 		this.nationality = nationality;
 	}
@@ -85,10 +89,16 @@ public class User implements UserDetails{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getBirthDate() {
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	public String getBirthDate() {
 		return birthDate;
 	}
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 	public String getNationality() {
@@ -131,4 +141,5 @@ public class User implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
 }

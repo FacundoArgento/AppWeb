@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div>Rooms Availability</div>
+    <div align="center"> <h1> Rooms Availability </h1></div>
     <form action="#" th:action="@{/bookings/availability}" th:object="${roomsAvailability}" method="post">
         <label> Check In </label>
         <input type="text" th:field="*{checkIn}"/>
@@ -14,9 +14,9 @@
         <input type="text" th:field="*{checkOut}"/>
         <label> Occupancy </label>
         <input type="text" th:field="*{occupancy}"/>
-        <button type="submit" name="availability"> Check Availability </button>
+        <button type="submit" name="availability"> Check Availability </button><br/>
     </form>
-    
+    <div align="center">
     <table>
     	<thead>
     	<tr>
@@ -47,6 +47,7 @@
     	</tr>
     	</tbody>
     </table>
+	</div>
 </div>
 </body>
 </html>

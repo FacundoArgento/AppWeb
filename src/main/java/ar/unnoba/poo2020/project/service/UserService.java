@@ -18,12 +18,19 @@ public class UserService implements IUserService, UserDetailsService{
 	@Autowired
 	private UserRepository userRepository;
 	
+	static boolean isValid(String email) {
+	      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+	      return email.matches(regex);
+	   }
+	
 	@Override
 	public User create(User user) {
-		if (userRepository.findUserByEmail(user.getEmail())== null) {
+		if (userRepository.findUserByEmail(user.getEmail())== null && isValid(user.getEmail()) == true) {
 			user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 			user = userRepository.save(user);
-		}	
+		} else {
+			System.out.println("No ha sido posible crear el usuario. Por favor revise sus datos e intente nuevamente.");
+		}
 		return user;
 	}
 

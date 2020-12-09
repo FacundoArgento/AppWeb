@@ -85,19 +85,21 @@ public class BookingController {
 	@PostMapping("/confirm")
 	public String createBooking(@ModelAttribute NewBookingRequestDTO confirmBooking, Authentication authentication, Model model) {
 		
-		//utilizo la clase ya creada NewBookingRequestDTO para no crear 2 clases iguales de gusto..
+		//utilizo la clase ya creada NewBookingRequestDTO.
 		
 		Booking booking = modelMapper.map(confirmBooking, Booking.class);
 		
 		booking.setId(null); //porque sino copia el id de la habitación.
 		booking.setGuest((User)authentication.getPrincipal());
+		
 		try {
 			
 			bookingService.createBooking(booking);
 			return "bookings/confirmed";
 		
 		} catch (Exception e) {
-			return "bookings/availability";
+			System.out.println("No se pudo realizar la reserva.");
+			return "redirect:/bookings/availability";
 		}
 		
 	}

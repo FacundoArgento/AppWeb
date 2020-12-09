@@ -23,13 +23,14 @@ public class BookingService implements IBookingService {
 	
 	
 	@Override
+	@Transactional
 	public Booking createBooking(Booking booking) throws Exception {
 		booking.setRoom(roomRepository.findById(booking.getRoom().getId()).get());
 		booking.setCost(booking.getRoom().getPrice());
 		booking.setCreatedAt(new Date());
 		
 		if (booking.getCheckIn().before(new Date()) || booking.getCheckIn().after(booking.getCheckOut())) {
-			throw new Exception("");
+			throw new Exception("Ocurrio un error acerca de las fechas de check-in y check-out. Por favor revisarlas e intentar nuevamente.");
 		}
 		
 		Room r = roomRepository.isRoomAvailable(booking.getCheckIn(), booking.getCheckOut(), booking.getRoom().getId());
@@ -37,7 +38,7 @@ public class BookingService implements IBookingService {
 		if (r !=null) {
 			return booking = bookingRepository.save(booking);
 		} else {
-			throw new Exception("");
+			throw new Exception("La habitación requerida para reservar ya no esta disponible.");
 		}
 	}
 
